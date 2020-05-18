@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Controllers\Ws;
+namespace App\Ws\Controllers;
 
 
 use Ratchet\ConnectionInterface;
@@ -26,8 +26,8 @@ abstract class Controller
     public function broadcastAllWithoutCurrentUser(ConnectionInterface $current, $message)
     {
         foreach ($this->clients as $client) {
-           if ($current !== $client) {
-               $client->send($message);
+            if ($current !== $client) {
+                $client->send($message);
             }
         }
     }
@@ -41,5 +41,11 @@ abstract class Controller
         foreach ($this->clients as $client) {
             $client->send($message);
         }
+    }
+
+
+    final public static function factory(...$args)
+    {
+        return new static(...$args);
     }
 }

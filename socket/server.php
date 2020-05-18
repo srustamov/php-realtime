@@ -6,8 +6,10 @@ require BASE_PATH. '/vendor/autoload.php';
 
 $config = config('socket');
 
-$app = new Ratchet\App($config['host'],$config['port']);
+$kernel = new App\Ws\Kernel();
 
-App\Providers\SocketRouteProvider::register($app);
+$app = $kernel->handle(
+    new Ratchet\App($config['host'],$config['port'])
+);
 
 $app->run();

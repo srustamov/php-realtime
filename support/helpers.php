@@ -23,17 +23,29 @@ function config_path(string $path = null): string
     return base_path('configs' . ($path ? ds() . trim($path, ds()) : ''));
 }
 
-function config($name)
+function config($name, $default = null)
 {
-    static $configs;
+    static $configurations;
 
-    if ($configs === null) {
+    if ($configurations === null) {
         foreach (glob(config_path('*.php')) as $file) {
-            $configs[explode('.', basename($file), 2)[0]] = require $file;
+            $configurations[explode('.', basename($file), 2)[0]] = require $file;
         }
     }
 
-    return $configs[$name] ?? null;
+    if (strpos($name, '.') !== false) {
+        $items = explode('.', $name);
+
+        $config = $configurations ?? [];
+
+        foreach ($items as $item) {
+            $config = $config[$item] ?? false;
+        }
+
+        return $config ?: $default;
+    }
+
+    return $configurations[$name] ?? null;
 }
 
 
@@ -59,4 +71,3 @@ function view($name, $data = [])
 
     throw new RuntimeException('View not found');
 }
-

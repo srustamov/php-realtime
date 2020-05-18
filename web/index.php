@@ -6,10 +6,10 @@ define('BASE_PATH', dirname(__DIR__));
 
 require BASE_PATH . '/vendor/autoload.php';
 
-$request = Request::createFromGlobals();
+$kernel = new App\Http\Kernel();
 
-$response = App\Providers\HttpRouteProvider::register(
-    $request
+$response = $kernel->handle(
+    Request::createFromGlobals()
 );
 
 $response->send();

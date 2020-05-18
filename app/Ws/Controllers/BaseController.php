@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Ws;
+namespace App\Ws\Controllers;
 
 use Exception;
 use Ratchet\ConnectionInterface;
