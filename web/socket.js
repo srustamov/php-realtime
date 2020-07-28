@@ -5,7 +5,7 @@ const $messages = document.querySelector('div.messages');
 window.onload = () => {
     const socket = new Socket('ws://localhost:8080');
 
-    socket.on('open',() => {
+    socket.on('open', () => {
         console.log("Connection established!");
     });
     socket.on('message', (message) => {
@@ -16,7 +16,7 @@ window.onload = () => {
         let message = $input.value;
         if (message.trim() !== '') {
             socket.emit(message);
-            showMessage(message,true);
+            showMessage(message, true);
             $input.value = '';
         }
     });
@@ -58,14 +58,14 @@ class Socket {
 }
 
 
-const showMessage = (message,self) => {
+const showMessage = (message, self) => {
 
     let p = document.createElement('p');
 
-    p.classList.add('p-1','shadow','bg-light','rounded');
+    p.classList.add('p-1', 'shadow', 'bg-light', 'rounded');
 
     if (self) {
-        p.classList.add('text-right','text-success')
+        p.classList.add('text-right', 'text-success')
     } else {
         p.classList.add('text-warning')
     }
@@ -73,5 +73,3 @@ const showMessage = (message,self) => {
 
     $messages.append(p);
 }
-
-

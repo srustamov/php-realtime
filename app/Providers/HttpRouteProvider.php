@@ -9,7 +9,7 @@ use Support\Route;
 
 class HttpRouteProvider implements ProviderContract
 {
-    private $namespace = 'App\\Controllers\\Http\\';
+    private $namespace = 'App\\Http\\Controllers\\';
 
     public function register()
     {

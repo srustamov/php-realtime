@@ -1,24 +1,22 @@
 {
-  "name": "tt/php-socket",
-  "authors": [
-    {
-      "name": "Samir Rustamov",
-      "email": "rustemovv96@gmail.com"
-    }
-  ],
-  "require": {
-    "cboden/ratchet": "^0.4.2"
-  },
-  "require-dev": {
-    "seregazhuk/php-watcher": "^0.5.2"
-  },
-  "autoload": {
-    "psr-4": {
-      "App\\": "app/",
-      "Support\\": "support/"
+    "name": "srustamov/php-realtime",
+    "authors": [{
+        "name": "Samir Rustamov",
+        "email": "rustemovv96@gmail.com"
+    }],
+    "require": {
+        "cboden/ratchet": "^0.4.2"
     },
-    "files": [
-      "support/helpers.php"
-    ]
-  }
+    "require-dev": {
+        "seregazhuk/php-watcher": "^0.5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Support\\": "support/"
+        },
+        "files": [
+            "support/helpers.php"
+        ]
+    }
 }

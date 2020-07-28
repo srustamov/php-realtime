@@ -19,7 +19,7 @@ use RuntimeException;
 class Route
 {
 
-    private static $namespace = 'App\\Controllers\\Http\\';
+    private static $namespace = 'App\\Http\\Controllers\\';
 
     private static $routes = [];
 
@@ -36,19 +36,18 @@ class Route
         }
 
         self::$routes[] = [
-            'as' => $name ?? $method.'-'.$path,
+            'as' => $name ?? $method . '-' . $path,
             'path' => $path,
             'methods' => [$method],
-            'callback' => explode('::', self::$namespace.$handler,2)
+            'callback' => explode('::', self::$namespace . $handler, 2)
         ];
     }
 
 
-    public static function add(array $methods,string $path,string $handler)
+    public static function add(array $methods, string $path, string $handler)
     {
-        foreach ($methods as $method)
-        {
-            self::$method($path,$handler);
+        foreach ($methods as $method) {
+            self::$method($path, $handler);
         }
     }
 
@@ -63,5 +62,4 @@ class Route
     {
         return self::$routes;
     }
-
 }
